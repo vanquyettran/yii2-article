@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'name',
                 'format' => 'raw',
                 'value' => function (Article $model) {
-                    return $model->a();
+                    return $model->name;
                 }
             ],
             'slug',
