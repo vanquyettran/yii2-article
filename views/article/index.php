@@ -38,7 +38,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->img('50x50');
                 }
             ],
-            'name',
+            [
+                'attribute' => 'name',
+                'format' => 'raw',
+                'value' => function (Article $model) {
+                    return $model->a();
+                }
+            ],
             'slug',
 //            'category.name',
             [
