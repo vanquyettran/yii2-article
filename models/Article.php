@@ -15,6 +15,9 @@ use yii\behaviors\TimestampBehavior;
 
 class Article extends \common\modules\article\baseModels\Article
 {
+    public $article_tag_ids;
+    public $related_article_ids;
+
     /**
      * @inheritdoc
      */
@@ -34,7 +37,15 @@ class Article extends \common\modules\article\baseModels\Article
             [['slug'], 'unique'],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ArticleCategory::className(), 'targetAttribute' => ['category_id' => 'id'], 'except' => 'test'],
             [['image_id'], 'exist', 'skipOnError' => true, 'targetClass' => Image::className(), 'targetAttribute' => ['image_id' => 'id'], 'except' => 'test'],
+            [['related_article_ids', 'article_tag_ids'], 'each', 'rule' => ['integer']],
         ];
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        
     }
 
     /**

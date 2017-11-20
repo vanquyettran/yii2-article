@@ -15,15 +15,15 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?php // $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'name') ?>
+    <?php // $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'slug') ?>
+    <?php // $form->field($model, 'slug') ?>
 
-    <?= $form->field($model, 'heading') ?>
+    <?php // $form->field($model, 'heading') ?>
 
-    <?= $form->field($model, 'page_title') ?>
+    <?php // $form->field($model, 'page_title') ?>
 
     <?php // echo $form->field($model, 'meta_title') ?>
 
@@ -79,11 +79,22 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'category_id') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'create_date_range')->textInput([
+                'class' => 'form-control daterange disable-counter'
+            ]) ?>
+        </div>
+        <div class="col-md-6">
+            <label>&nbsp;</label>
+            <div class="form-group">
+                <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+                <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+            </div>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+<?= $this->render('dateRangePicker', ['selector' => 'input.daterange']) ?>
